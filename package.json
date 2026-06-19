@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build:ext": "wxt build",
+    "watch:ext": "wxt",
+    "dev:all": "concurrently \"pnpm dev\" \"pnpm watch:ext\"",
+    "extension:prepare": "wxt prepare"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.73",
@@ -32,6 +36,7 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.3",
     "postcss": "^8.5",
     "tailwindcss": "^4.2.0",
     "typescript": "5.7.3",
