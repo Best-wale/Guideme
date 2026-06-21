@@ -1,4 +1,4 @@
-import { defineBackground } from 'wxt/sandbox';
+import { defineBackground } from 'wxt/utils/define-background';
 
 const API_URL = 'http://localhost:3000/api';
 
@@ -24,18 +24,16 @@ interface ChatResponse {
   }>;
 }
 
-export default defineBackground({
-  main() {
-    // Listen for messages from content script
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-      if (message.type === 'CHAT_REQUEST') {
-        handleChatRequest(message.payload, sendResponse);
-        return true; // Indicate we'll respond asynchronously
-      }
-    });
+export default defineBackground(() => {
+  // Listen for messages from content script
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'CHAT_REQUEST') {
+      handleChatRequest(message.payload, sendResponse);
+      return true; // Indicate we'll respond asynchronously
+    }
+  });
 
-    console.log('[AI Site Guide] Background service worker initialized');
-  },
+  console.log('[AI Site Guide] Background service worker initialized');
 });
 
 async function handleChatRequest(payload: ChatRequest, sendResponse: (response: any) => void) {

@@ -1,5 +1,5 @@
-import { defineContentScript } from 'wxt/sandbox';
-import { setupContentScript } from './content-script-setup';
+import { defineContentScript } from 'wxt/utils/define-content-script';
+import { setupContentScript } from '../utils/content-script-setup';
 
 export default defineContentScript({
   matches: ['<all_urls>'],

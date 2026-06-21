@@ -18,7 +18,6 @@ export default defineConfig({
       128: '/icons/icon-128.png',
     },
   },
-  entrypointsDir: 'src/entrypoints',
   srcDir: 'src',
-  outDir: 'dist',
+  outDir: '.output',
 });
